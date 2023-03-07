@@ -8,6 +8,8 @@ public class Problem_0036_ValidSudoku {
 		boolean[][] bucket = new boolean[9][10];
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
+				// (i,j)每一个格子
+				// (i,j) i行，j列，？桶
 				int bid = 3 * (i / 3) + (j / 3);
 				if (board[i][j] != '.') {
 					int num = board[i][j] - '0';

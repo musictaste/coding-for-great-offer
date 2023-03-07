@@ -15,7 +15,8 @@ public class Problem_0022_GenerateParentheses {
 
 	// path 做的决定  path[0....index-1]做完决定的！
 	// path[index.....] 还没做决定，当前轮到index位置做决定！
-	
+	// leftMinusRight: ( - )的数量，记录还有几个）可以填
+	// leftRest : 剩余（ 可以填的数量
 	public static void process(char[] path, int index, int leftMinusRight, int leftRest, List<String> ans) {
 		if (index == path.length) {
 			ans.add(String.valueOf(path));

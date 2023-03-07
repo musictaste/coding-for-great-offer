@@ -31,6 +31,7 @@ public class Problem_0037_SudokuSolver {
 			return true;
 		}
 		// 当离开(i，j)，应该去哪？(nexti, nextj)
+		// 如果到达最后一列，要换行继续尝试
 		int nexti = j != 8 ? i : i + 1;
 		int nextj = j != 8 ? j + 1 : 0;
 		if (board[i][j] != '.') {
@@ -48,6 +49,7 @@ public class Problem_0037_SudokuSolver {
 					if (process(board, nexti, nextj, row, col, bucket)) {
 						return true;
 					}
+					// 如果没有生成有效数独，要恢复现场
 					row[i][num] = false;
 					col[j][num] = false;
 					bucket[bid][num] = false;

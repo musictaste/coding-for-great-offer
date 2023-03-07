@@ -2,6 +2,7 @@ package class29;
 
 public class Problem_0050_PowXN {
 
+	// 求x的n次方，最快
 	public static int pow(int a, int n) {
 		int ans = 1;
 		int t = a;

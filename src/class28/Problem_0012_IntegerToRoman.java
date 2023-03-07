@@ -1,12 +1,18 @@
 package class28;
 
 public class Problem_0012_IntegerToRoman {
-
+	// I：1
+	// V:5
+	// X:10
+	// L:50
+	// C:100
+	// D:500
+	// M:1000
 	public static String intToRoman(int num) {
 		String[][] c = { 
-				{ "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" },
-				{ "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" },
-				{ "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" },
+				{ "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" }, // 范围：0到9
+				{ "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" }, // 范围：10到90
+				{ "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" }, // 范围：100到900
 				{ "", "M", "MM", "MMM" } };
 		StringBuilder roman = new StringBuilder();
 		roman
