@@ -42,7 +42,7 @@ public class Code02_MinPeople {
 		if (arr == null || arr.length == 0) {
 			return 0;
 		}
-		Arrays.sort(arr);
+		Arrays.sort(arr); //先清洗数据，
 		int x = arr[0];
 		int c = 1;
 		int ans = 0;

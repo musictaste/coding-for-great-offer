@@ -16,7 +16,7 @@ public class Code01_PickBands {
 		int size = clean(programs);
 		int[] map1 = init(1 << (nums << 1));
 		int[] map2 = null;
-		if ((nums & 1) == 0) {
+		if ((nums & 1) == 0) { // 偶数
 			// nums = 8 , 4
 			f(programs, size, 0, 0, 0, nums >> 1, map1);
 			map2 = map1;
@@ -46,13 +46,17 @@ public class Code01_PickBands {
 	public static int clean(int[][] programs) {
 		int x = 0;
 		int y = 0;
+		// 调整数据：乐队编号小的放前面
 		for (int[] p : programs) {
 			x = Math.min(p[0], p[1]);
 			y = Math.max(p[0], p[1]);
 			p[0] = x;
 			p[1] = y;
 		}
+		// 乐队编号谁小谁放前面；乐队编号相同，花费越小放前面
 		Arrays.sort(programs, (a, b) -> a[0] != b[0] ? (a[0] - b[0]) : (a[1] != b[1] ? (a[1] - b[1]) : (a[2] - b[2])));
+
+		// 清洗数据，乐队编号相同时，只保留花费最小的
 		x = programs[0][0];
 		y = programs[0][1];
 		int n = programs.length;
@@ -65,13 +69,15 @@ public class Code01_PickBands {
 				y = programs[i][1];
 			}
 		}
+
+		// 去除null的数据
 		int size = 1;
 		for (int i = 1; i < n; i++) {
 			if (programs[i] != null) {
 				programs[size++] = programs[i];
 			}
 		}
-		// programs[0...size-1]
+		// programs[0...size-1]的数据是有效的，其他数据都不要了
 		return size;
 	}
 
@@ -83,6 +89,7 @@ public class Code01_PickBands {
 		return arr;
 	}
 
+	// 时间复杂度：C size rest,也就是size中挑rest个符合要求的；举例：120个项目中挑8个符合要求的乐队
 	public static void f(int[][] programs, int size, int index, int status, int cost, int rest, int[] map) {
 		if (rest == 0) {
 			map[status] = Math.min(map[status], cost);
@@ -102,7 +109,7 @@ public class Code01_PickBands {
 //	// programs 洗数据 size
 //	// nums = 8   16只乐队
 //	
-//	// process(programs, size, (1 << (nums << 1)) - 1, 0, 4, 0, 0)
+//	// process(programs, size, (1 << (nums << 1)) - 1, 0, nums, 0, 0)
 //	
 //	public static int minCost = Integer.MAX_VALUE;
 //	
@@ -130,7 +137,7 @@ public class Code01_PickBands {
 //		}
 //	}
 //	
-//	
+
 //	public static void zuo(int[] arr, int index, int rest) {
 //		if(rest == 0) {
 //			停止
