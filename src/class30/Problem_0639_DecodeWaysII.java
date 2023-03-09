@@ -29,7 +29,7 @@ public class Problem_0639_DecodeWaysII {
 				}
 				return p1 + p2;
 			} else { // str[i+1] == '*'
-				// i i+1 -> 一起转 1* 2* 3* 9*
+				// i i+1 -> 一起转 1* 2* 符合要求； 3* 9* 不符合要求
 				int p2 = 0;
 				if (str[i] < '3') {
 					p2 = f(str, i + 2) * (str[i] == '1' ? 9 : 6);
@@ -37,7 +37,7 @@ public class Problem_0639_DecodeWaysII {
 				return p1 + p2;
 			}
 		} else { // str[i] == '*' 1~9
-			// i 单转 9种
+			// i 单转 9种可能性
 			int p1 = 9 * f(str, i + 1);
 			if (i + 1 == str.length) {
 				return p1;

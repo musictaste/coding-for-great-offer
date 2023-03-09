@@ -55,13 +55,12 @@ public class Code03_FindKthMinNumber {
 		return getUpMedian(shorts, 0, s - 1, longs, kth - s, kth - 1);
 	}
 
-	
-	
-	
+
 	// A[s1...e1]
 	// B[s2...e2]
 	// 一定等长！
 	// 返回整体的，上中位数！8（4） 10（5） 12（6）
+	// 时间复杂度：O(logN)
 	public static int getUpMedian(int[] A, int s1, int e1, int[] B, int s2, int e2) {
 		int mid1 = 0;
 		int mid2 = 0;
@@ -97,6 +96,7 @@ public class Code03_FindKthMinNumber {
 				}
 			}
 		}
+		// 两个数组都只剩一个数，取上中位数
 		return Math.min(A[s1], B[s2]);
 	}
 

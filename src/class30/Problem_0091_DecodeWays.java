@@ -1,5 +1,6 @@
 package class30;
 
+// 从左到右的尝试模型
 public class Problem_0091_DecodeWays {
 
 	public static int numDecodings1(String s) {
@@ -19,10 +20,13 @@ public class Problem_0091_DecodeWays {
 		if (str[index] == '0') {
 			return 0;
 		}
+		// index位置的数一定不为0
+		// index单转
 		int ways = process(str, index + 1);
 		if (index + 1 == str.length) {
 			return ways;
 		}
+		// index和index+1的位置一起转，前提小于27
 		int num = (str[index] - '0') * 10 + str[index + 1] - '0';
 		if (num < 27) {
 			ways += process(str, index + 2);

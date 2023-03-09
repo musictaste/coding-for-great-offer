@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Problem_0118_PascalTriangle {
 
+	// 杨辉三角
 	public static List<List<Integer>> generate(int numRows) {
 		List<List<Integer>> ans = new ArrayList<>();
 		for (int i = 0; i < numRows; i++) {

@@ -29,6 +29,9 @@ public class Problem_0079_WordSearch {
 			return false;
 		}
 		char tmp = b[i][j];
+		// 深度优先遍历，典型的保护现场，恢复现场
+		// 走过的路标记为0，防止走回头路
+		// 不要用‘0’，而要用0 aciic码
 		b[i][j] = 0;
 		boolean ans = f(b, i - 1, j, w, k + 1) 
 				|| f(b, i + 1, j, w, k + 1) 

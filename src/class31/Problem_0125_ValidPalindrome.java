@@ -20,6 +20,7 @@ public class Problem_0125_ValidPalindrome {
 				L++;
 				R--;
 			} else {
+				// 是否为有效字符，如果不是则跳过该字符
 				L += validChar(str[L]) ? 0 : 1;
 				R -= validChar(str[R]) ? 0 : 1;
 			}

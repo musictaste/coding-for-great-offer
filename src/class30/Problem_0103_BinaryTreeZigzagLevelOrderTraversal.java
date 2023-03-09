@@ -12,6 +12,7 @@ public class Problem_0103_BinaryTreeZigzagLevelOrderTraversal {
 		TreeNode right;
 	}
 
+	// 宽度优先遍历
 	public static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
 		List<List<Integer>> ans = new ArrayList<>();
 		if (root == null) {

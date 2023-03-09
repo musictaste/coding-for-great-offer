@@ -7,13 +7,18 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+// 高频题
+// 时间复杂度O(K^2 * 25 * N) N是list的个数
+// 单个单词的复杂度：O(K *25 *K) ,一个单词的长度为K，一个单词产生的邻居(可能性)为K*25,产生的每一个邻居(可能性)在哈希表中比对的复杂度为O(K)[注：因为每一个可能性的长度都为K，每个字母都要比对]
+// 哈希表查询的时间复杂度为O(1),指的样本本身不大的的情况，例如int类型、内存地址、对象的hashcode
+// 如果哈希表中存放的是长度为K的字符串，那么哈希表查询的时间复杂度为O(K)
 public class Problem_0127_WordLadder {
 
 	// start，出发的单词
-	// to, 目标单位
+	// to, 目标单词
 	// list, 列表
 	// to 一定属于list
-	// start未必
+	// start未必属于list
 	// 返回变幻的最短路径长度
 	public static int ladderLength1(String start, String to, List<String> list) {
 		list.add(start);
@@ -26,6 +31,7 @@ public class Problem_0127_WordLadder {
 		// bbc  1
 		HashMap<String, Integer> distanceMap = new HashMap<>();
 		distanceMap.put(start, 1);
+		// 宽度优先遍历，避免重复进队列
 		HashSet<String> set = new HashSet<>();
 		set.add(start);
 		Queue<String> queue = new LinkedList<>();
@@ -78,6 +84,8 @@ public class Problem_0127_WordLadder {
 		return res;
 	}
 
+	// 优化方法：从start和end,从两头向中间逼近，如果碰上就说明有效
+	// start产生的nextset邻居，和end产生的nextset邻居，谁的数量小谁就变成startset
 	public static int ladderLength2(String beginWord, String endWord, List<String> wordList) {
 		HashSet<String> dict = new HashSet<>(wordList);
 		if (!dict.contains(endWord)) {

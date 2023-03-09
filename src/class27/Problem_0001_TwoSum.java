@@ -1,7 +1,6 @@
 package class27;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Problem_0001_TwoSum {
 
