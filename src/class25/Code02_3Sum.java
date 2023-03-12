@@ -11,6 +11,8 @@ public class Code02_3Sum {
 		Arrays.sort(nums);
 		int N = nums.length;
 		List<List<Integer>> ans = new ArrayList<>();
+		// 为什么要从右到左遍历？因为要返回三元组，如果在已经求得的二元组的基础上生成三元组，如果是在三元组的开头添加一个数代价有点大；
+		// 如果在二元组的后面添加一个数变成三元组，代价小
 		for (int i = N - 1; i > 1; i--) { // 三元组最后一个数，是arr[i]   之前....二元组 + arr[i]
 			if (i == N - 1 || nums[i] != nums[i + 1]) {
 				List<List<Integer>> nexts = twoSum(nums, i - 1, -nums[i]);
@@ -36,6 +38,7 @@ public class Code02_3Sum {
 			} else if (nums[L] + nums[R] < target) {
 				L++;
 			} else { // nums[L] + nums[R] == target
+				// 为什么要判断L==0,因为要判断前一个数是否等于相等，L-1越界了
 				if (L == 0 || nums[L - 1] != nums[L]) {
 					List<Integer> cur = new ArrayList<>();
 					cur.add(nums[L]);

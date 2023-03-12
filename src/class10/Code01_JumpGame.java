@@ -7,6 +7,7 @@ public class Code01_JumpGame {
 		if (arr == null || arr.length == 0) {
 			return 0;
 		}
+		// 小人跳step步最远能到cur位置，如果允许小人多跳一步，最远可以导到next位置
 		int step = 0;
 		int cur = 0;
 		int next = 0;
