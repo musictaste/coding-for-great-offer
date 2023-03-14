@@ -2,6 +2,7 @@ package class29;
 
 public class Problem_0069_SqrtX {
 
+	// X开根号，向下取整
 	// x一定非负，输入可以保证
 	public static int mySqrt(int x) {
 		if (x == 0) {
