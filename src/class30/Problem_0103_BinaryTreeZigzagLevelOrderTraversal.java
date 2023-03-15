@@ -18,6 +18,7 @@ public class Problem_0103_BinaryTreeZigzagLevelOrderTraversal {
 		if (root == null) {
 			return ans;
 		}
+		// 双向队列
 		LinkedList<TreeNode> deque = new LinkedList<>();
 		deque.add(root);
 		int size = 0;
@@ -26,6 +27,7 @@ public class Problem_0103_BinaryTreeZigzagLevelOrderTraversal {
 			size = deque.size();
 			List<Integer> curLevel = new ArrayList<>();
 			for (int i = 0; i < size; i++) {
+				// 第一次从左到右遍历；第二次从右到左遍历
 				TreeNode cur = isHead ? deque.pollFirst() : deque.pollLast();
 				curLevel.add(cur.val);
 				if(isHead) {

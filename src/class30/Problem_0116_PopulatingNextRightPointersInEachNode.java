@@ -19,6 +19,7 @@ public class Problem_0116_PopulatingNextRightPointersInEachNode {
 		queue.offer(root);
 		while (!queue.isEmpty()) {
 			// 第一个弹出的节点
+			// 每遍历一层，pre都先是null
 			Node pre = null;
 			int size = queue.size;
 			for (int i = 0; i < size; i++) {
@@ -29,6 +30,7 @@ public class Problem_0116_PopulatingNextRightPointersInEachNode {
 				if (cur.right != null) {
 					queue.offer(cur.right);
 				}
+				// 如果pre为null，当前节点为pre；如果pre不为空，则将当前节点放到pre节点后面
 				if (pre != null) {
 					pre.next = cur;
 				}
@@ -53,21 +55,26 @@ public class Problem_0116_PopulatingNextRightPointersInEachNode {
 			return size == 0;
 		}
 
+		// 从尾部加节点
 		public void offer(Node cur) {
 			size++;
 			if (head == null) {
+				// 没有头结点，当前节点为头尾节点
 				head = cur;
 				tail = cur;
 			} else {
+				// 如果有头结点，在尾结点加节点
 				tail.next = cur;
 				tail = cur;
 			}
 		}
 
+		// 从头部弹出节点
 		public Node poll() {
 			size--;
 			Node ans = head;
 			head = head.next;
+			// 弹出的节点跟队列断连
 			ans.next = null;
 			return ans;
 		}

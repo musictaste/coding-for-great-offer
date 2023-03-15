@@ -1,5 +1,6 @@
 package class30;
 
+// 对称二叉树，也就是镜像树
 public class Problem_0101_SymmetricTree {
 
 	public static class TreeNode {
@@ -10,6 +11,7 @@ public class Problem_0101_SymmetricTree {
 
 	public boolean isSymmetric(TreeNode root) {
 		return isMirror(root, root);
+//		return isMirror(root.left, root.right);
 	}
 
 	// 一棵树是原始树  head1

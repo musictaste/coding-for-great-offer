@@ -2,6 +2,7 @@ package class30;
 
 public class Problem_0639_DecodeWaysII {
 
+	// 该方法对于大数没有做取模运算，需要自己改
 	public static int numDecodings0(String str) {
 		return f(str.toCharArray(), 0);
 	}
@@ -21,7 +22,9 @@ public class Problem_0639_DecodeWaysII {
 			if (i + 1 == str.length) {
 				return p1;
 			}
+			// i i+1 -> 一起转
 			if (str[i + 1] != '*') {
+				// i+1位置不是*
 				int num = (str[i] - '0') * 10 + str[i + 1] - '0';
 				int p2 = 0;
 				if (num < 27) {
@@ -32,6 +35,7 @@ public class Problem_0639_DecodeWaysII {
 				// i i+1 -> 一起转 1* 2* 符合要求； 3* 9* 不符合要求
 				int p2 = 0;
 				if (str[i] < '3') {
+					// 1* 有9中方法； 2* 有6种方法
 					p2 = f(str, i + 2) * (str[i] == '1' ? 9 : 6);
 				}
 				return p1 + p2;
@@ -42,6 +46,7 @@ public class Problem_0639_DecodeWaysII {
 			if (i + 1 == str.length) {
 				return p1;
 			}
+			// i和i+1一起转
 			if (str[i + 1] != '*') {
 				// * 0 10 20
 				// * 1 11 21

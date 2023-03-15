@@ -17,6 +17,7 @@ public class Problem_0079_WordSearch {
 	// 目前到达了b[i][j]，word[k....]
 	// 从b[i][j]出发，能不能搞定word[k....] true false
 	public static boolean f(char[][] b, int i, int j, char[] w, int k) {
+		// word已经走完了，说明走成了
 		if (k == w.length) {
 			return true;
 		}
@@ -29,7 +30,7 @@ public class Problem_0079_WordSearch {
 			return false;
 		}
 		char tmp = b[i][j];
-		// 深度优先遍历，典型的保护现场，恢复现场
+		// 深度优先遍历，典型的制造现场，恢复现场
 		// 走过的路标记为0，防止走回头路
 		// 不要用‘0’，而要用0 aciic码
 		b[i][j] = 0;
