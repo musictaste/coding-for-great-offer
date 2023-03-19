@@ -18,6 +18,7 @@ public class Problem_0213_HouseRobberII {
 		return dp[n - 1];
 	}
 
+	// 优化方案：通过有限几个变量替代dp表
 	public static int rob(int[] nums) {
 		if (nums == null || nums.length == 0) {
 			return 0;
@@ -28,6 +29,7 @@ public class Problem_0213_HouseRobberII {
 		if (nums.length == 2) {
 			return Math.max(nums[0], nums[1]);
 		}
+		// 0到N-2位置求最好
 		int pre2 = nums[0];
 		int pre1 = Math.max(nums[0], nums[1]);
 		for (int i = 2; i < nums.length - 1; i++) {
@@ -35,6 +37,8 @@ public class Problem_0213_HouseRobberII {
 			pre2 = pre1;
 			pre1 = tmp;
 		}
+
+		// 1到N-1位置求最好
 		int ans1 = pre1;
 		pre2 = nums[1];
 		pre1 = Math.max(nums[1], nums[2]);
