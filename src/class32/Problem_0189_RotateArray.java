@@ -2,6 +2,7 @@ package class32;
 
 public class Problem_0189_RotateArray {
 
+	// 课上的简单方法，三次逆序
 	public void rotate1(int[] nums, int k) {
 		int N = nums.length;
 		k = k % N;

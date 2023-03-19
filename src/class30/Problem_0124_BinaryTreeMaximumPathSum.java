@@ -20,6 +20,7 @@ public class Problem_0124_BinaryTreeMaximumPathSum {
 
 	}
 
+	// 124题开始
 	public static int maxPathSum(TreeNode root) {
 		if (root == null) {
 			return 0;
@@ -69,6 +70,7 @@ public class Problem_0124_BinaryTreeMaximumPathSum {
 		}
 		return new Info(maxPathSum, maxPathSumFromHead);
 	}
+	// 124题结束
 
 	// 如果要返回路径的做法
 	public static List<TreeNode> getMaxSumPath(TreeNode head) {

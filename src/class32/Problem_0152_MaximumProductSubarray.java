@@ -16,6 +16,7 @@ public class Problem_0152_MaximumProductSubarray {
 		for(int i = 1; i < n; i++) {
 			double p1 = arr[i];
 			double p2 = arr[i] * premax;
+			// 可能性三：负负得正的情况，所以需要上一步的最小值的信息
 			double p3 = arr[i] * premin;
 			double curmax = Math.max(Math.max(p1, p2), p3);
 			double curmin = Math.min(Math.min(p1, p2), p3);

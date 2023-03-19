@@ -35,6 +35,7 @@ public class Problem_0140_WordBreakII {
 			List<String> ans) {
 		if (index == str.length) {
 			StringBuilder builder = new StringBuilder();
+			// 为了最后一个单词不加空格，所以path.size -1
 			for (int i = 0; i < path.size() - 1; i++) {
 				builder.append(path.get(i) + " ");
 			}
@@ -52,8 +53,10 @@ public class Problem_0140_WordBreakII {
 				if (cur.end && dp[end + 1]) {
 					// [i...end] 前缀串
 					// str.subString(i,end+1)  [i..end]
+					// 为了不通过subString方法切当前尝试的字符串，在前缀树中直接保存当前单词的完整字符串
 					path.add(cur.path);
 					process(str, end + 1, root, dp, path, ans);
+					// 恢复现场
 					path.remove(path.size() - 1);
 				}
 			}

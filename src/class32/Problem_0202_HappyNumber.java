@@ -5,6 +5,7 @@ import java.util.TreeSet;
 
 public class Problem_0202_HappyNumber {
 
+	// 暴力方法
 	public static boolean isHappy1(int n) {
 		HashSet<Integer> set = new HashSet<>();
 		while (n != 1) {
@@ -38,6 +39,7 @@ public class Problem_0202_HappyNumber {
 		return set;
 	}
 
+	// 根据实验结论得到的优化方法
 	public static boolean isHappy2(int n) {
 		while (n != 1 && n != 4) {
 			int sum = 0;
