@@ -3,7 +3,7 @@ package class33;
 public class Problem_0277_FindTheCelebrity {
 
 	// 提交时不要提交这个函数，因为默认系统会给你这个函数
-	// knows方法，自己不认识自己
+	// knows方法，自己认识自己
 	public static boolean knows(int x, int i) {
 		return true;
 	}
@@ -11,8 +11,11 @@ public class Problem_0277_FindTheCelebrity {
 	// 只提交下面的方法 0 ~ n-1
 	public int findCelebrity(int n) {
 		// 谁可能成为明星，谁就是cand
+		// cand明星候选人
 		int cand = 0;
-		for (int i = 0; i < n; ++i) {
+		// 因为自己认识自己，默认0是明星，所以0位置不需要遍历
+		for (int i = 1; i < n; ++i) {
+			// 候选认识i，那么i变成候选
 			if (knows(cand, i)) {
 				cand = i;
 			}

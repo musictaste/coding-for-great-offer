@@ -6,10 +6,12 @@ public class Problem_0238_ProductOfArrayExceptSelf {
 		int n = nums.length;
 		int[] ans = new int[n];
 		ans[0] = nums[0];
+		// 从左到右得到包含当前数的累乘积
 		for (int i = 1; i < n; i++) {
 			ans[i] = ans[i - 1] * nums[i];
 		}
 		int right = 1;
+		// 从右往左，数组从左到右前一个位置的累乘积 * 后一个位置的数
 		for (int i = n - 1; i > 0; i--) {
 			ans[i] = ans[i - 1] * right;
 			right *= nums[i];

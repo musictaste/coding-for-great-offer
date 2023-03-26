@@ -19,7 +19,9 @@ public class Problem_0210_CourseScheduleII {
 		}
 	}
 
-	public int[] findOrder(int numCourses, int[][] prerequisites) {
+	public static int[] findOrder(int numCourses, int[][] prerequisites) {
+		// 生成课程编号数组,注意给定的数据有可能某些课程是不存在的，那么需要将不存在的课程先打印
+		// [[3,0],[0,1]]
 		int[] ans = new int[numCourses];
 		for (int i = 0; i < numCourses; i++) {
 			ans[i] = i;
@@ -27,6 +29,7 @@ public class Problem_0210_CourseScheduleII {
 		if (prerequisites == null || prerequisites.length == 0) {
 			return ans;
 		}
+		// 课程编号，课程节点信息
 		HashMap<Integer, Node> nodes = new HashMap<>();
 		for (int[] arr : prerequisites) {
 			int to = arr[0];
@@ -42,6 +45,7 @@ public class Problem_0210_CourseScheduleII {
 			f.nexts.add(t);
 			t.in++;
 		}
+		// 利用已经生成好的课程编号，
 		int index = 0;
 		Queue<Node> zeroInQueue = new LinkedList<>();
 		for (int i = 0; i < numCourses; i++) {
@@ -68,4 +72,12 @@ public class Problem_0210_CourseScheduleII {
 		return count == needPrerequisiteNums ? ans : new int[0];
 	}
 
+	public static void main(String[] args) {
+		int numCourses=4;
+		int[][] prerequisites = {{3,0},{0,1}};
+		int[] order = findOrder(numCourses, prerequisites);
+		for (int i = 0; i < order.length; i++) {
+			System.out.print(order[i]);
+		}
+	}
 }

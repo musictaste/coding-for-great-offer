@@ -2,10 +2,13 @@ package class33;
 
 public class Problem_0279_PerfectSquares {
 
-	// 暴力解
+	// 暴力解,暴力递归，代码很妙
 	public static int numSquares1(int n) {
+		// 最差的情况，1+1+1.。。+1=n，所有最差的情况有n种
+		// 从2开始求暴力解，n=2*2+b*b
 		int res = n, num = 2;
 		while (num * num <= n) {
+			// 除法+取模
 			int a = n / (num * num), b = n % (num * num);
 			res = Math.min(res, a + numSquares1(b));
 			num++;

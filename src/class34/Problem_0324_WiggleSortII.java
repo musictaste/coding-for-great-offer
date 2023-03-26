@@ -10,6 +10,7 @@ public class Problem_0324_WiggleSortII {
 		int N = nums.length;
 		// 小 中 右
 		findIndexNum(nums, 0, nums.length - 1, N / 2);
+		// 偶数情况
 		if ((N & 1) == 0) {
 			// R L -> L R
 			shuffle(nums, 0, nums.length - 1);
@@ -23,10 +24,16 @@ public class Problem_0324_WiggleSortII {
 //				swap(nums, i, i + 1);
 //			}
 		} else {
+			// 奇数情况
+			// L0 R1 L1 R2 L2
+			// L0位置不参与完美洗牌
 			shuffle(nums, 1, nums.length - 1);
 		}
 	}
 
+	// 一个无序数组找到第K小的数字
+	// 快排改法，得到 小于区域在左边、等于区域在中间、大于区域在右边
+	// 时间复杂度为O(N)，快排的时间复杂度为O(N*logN),但是我们不需要排序，只需要走一侧，所以时间复杂度O(N)
 	public static int findIndexNum(int[] arr, int L, int R, int index) {
 		int pivot = 0;
 		int[] range = null;
@@ -60,6 +67,7 @@ public class Problem_0324_WiggleSortII {
 		return new int[] { less + 1, more - 1 };
 	}
 
+	// 完美洗牌
 	public static void shuffle(int[] nums, int l, int r) {
 		while (r - l + 1 > 0) {
 			int lenAndOne = r - l + 2;

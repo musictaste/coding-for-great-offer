@@ -13,6 +13,7 @@ public class Problem_0207_CourseSchedule {
 	public static class Course {
 		public int name;
 		public int in;
+		// 所有的邻居
 		public ArrayList<Course> nexts;
 
 		public Course(int n) {
@@ -46,12 +47,14 @@ public class Problem_0207_CourseSchedule {
 		int needPrerequisiteNums = nodes.size();
 		Queue<Course> zeroInQueue = new LinkedList<>();
 		for (Course node : nodes.values()) {
+			// 入度为0的点进队列
 			if (node.in == 0) {
 				zeroInQueue.add(node);
 			}
 		}
 		int count = 0;
 		while (!zeroInQueue.isEmpty()) {
+			// 入度为0的点弹出时，消除它对相邻节点的影响，即相邻节点的入度-1
 			Course cur = zeroInQueue.poll();
 			count++;
 			for (Course next : cur.nexts) {
@@ -74,6 +77,7 @@ public class Problem_0207_CourseSchedule {
 		//           1   {}
 		//           2   {}
 		//           3   {0,1,2}
+		//          3这门课做完以后，哪些课可以做了
 		ArrayList<ArrayList<Integer>> nexts = new ArrayList<>();
 		for (int i = 0; i < courses; i++) {
 			nexts.add(new ArrayList<>());
@@ -86,7 +90,7 @@ public class Problem_0207_CourseSchedule {
 			in[arr[0]]++;
 		}
 		
-		// 队列
+		// 队列，用数组替代队列，用左右指针进行追赶
 		int[] zero = new int[courses];
 		// 该队列有效范围是[l,r)
 		// 新来的数，放哪？r位置，r++
@@ -101,7 +105,8 @@ public class Problem_0207_CourseSchedule {
 		}
 		int count = 0;
 		while (l != r) {
-			count++; // zero[l] 出队列   l++
+			count++;
+			// zero[l] 出队列   l++
 			for (int next : nexts.get(zero[l++])) {
 				if (--in[next] == 0) {
 					zero[r++] = next;

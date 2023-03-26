@@ -30,12 +30,15 @@ public class Problem_0348_DesignTicTacToe {
 			matrix[row][col] = true;
 			rows[row][player]++;
 			cols[col][player]++;
+			// 行=列，左对角线
 			if (row == col) {
 				leftUp[player]++;
 			}
+			// 行+列=N-1，右对角线
 			if (row + col == N - 1) {
 				rightUp[player]++;
 			}
+			// 赢的情况，某行、某列、左右对角线
 			if (rows[row][player] == N || cols[col][player] == N || leftUp[player] == N || rightUp[player] == N) {
 				return player;
 			}

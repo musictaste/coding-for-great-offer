@@ -11,13 +11,18 @@ public class Problem_0289_GameOfLife {
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
 				int neighbors = neighbors(board, i, j);
+				// 什么情况下这个节点可以存活？
+				// 情况1：当周围有3个存活节点，当前位置不管死活，更新后必是存活节点
+				// 情况2：当前节点是存活节点，周围有两个存活节点
 				if (neighbors == 3 || (board[i][j] == 1 && neighbors == 2)) {
+					// 将当前节点的第二位标记为1
 					board[i][j] |= 2;
 				}
 			}
 		}
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
+				// 将节点的第二位变成第1位；也就是设置更新后的信息
 				board[i][j] >>= 1;
 			}
 		}

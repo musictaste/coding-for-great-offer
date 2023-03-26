@@ -20,6 +20,8 @@ public class Problem_0384_ShuffleAnArray {
 			return origin;
 		}
 
+		// 0到N-1位置，随机一个数，放到 N-1位置
+		// 0到N-2位置，随机一个数，放到 N-2位置
 		public int[] shuffle() {
 			for (int i = N - 1; i >= 0; i--) {
 				int r = (int) (Math.random() * (i + 1));

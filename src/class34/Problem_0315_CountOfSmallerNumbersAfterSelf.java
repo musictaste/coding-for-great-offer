@@ -3,7 +3,7 @@ package class34;
 import java.util.ArrayList;
 import java.util.List;
 
-// 视频第五节的第三题，归并排序-求逆序对
+// 体系学习班视频第五节的第三题，归并排序-求逆序对
 public class Problem_0315_CountOfSmallerNumbersAfterSelf {
 
 	public static class Node {

@@ -42,6 +42,7 @@ public class Problem_0341_FlattenNestedListIterator {
 		public Integer next() {
 			Integer ans = null;
 			if (!used) {
+				// 当前元素标记为使用过，光标跳下一个元素
 				ans = get(list, stack);
 				used = true;
 				hasNext();
@@ -57,6 +58,7 @@ public class Problem_0341_FlattenNestedListIterator {
 			if (!used) {
 				return true;
 			}
+			// 栈不为空，并且已经使用过了，找下个元素，并标记为没有使用过
 			if (findNext(list, stack)) {
 				used = false;
 			}

@@ -48,23 +48,30 @@ public class Problem_0673_NumberOfLongestIncreasingSubsequence {
 		if (nums == null || nums.length == 0) {
 			return 0;
 		}
+		// 长度为i的大于等于X的情况一共有多少种情况，treemap是有序表
+		// 如果不能理解，见笔记举例情况
 		ArrayList<TreeMap<Integer, Integer>> dp = new ArrayList<>();
 		int len = 0;
 		int cnt = 0;
 		for (int num : nums) {
-			// num之前的长度，num到哪个长度len+1
+			// num之前的长度，num到哪个长度呢？len+1
+			// 来到数字num，能生成的最大递增子序列的长度是多少呢？len+1
 			len = search(dp, num);
 			// cnt : 最终要去加底下的记录，才是应该填入的value
 			if (len == 0) {
+				// 之前的长度为0，那么num的情况数是：1+ 长度为1的大于num的情况数(这个数在下面)
 				cnt = 1;
 			} else {
 				TreeMap<Integer, Integer> p = dp.get(len - 1);
+				// 上一个长度的总共的情况数 - 大于num的情况数
 				cnt = p.firstEntry().getValue() - (p.ceilingKey(num) != null ? p.get(p.ceilingKey(num)) : 0);
 			}
 			if (len == dp.size()) {
+				// 当前长度来到新的长度，生成一个有序表
 				dp.add(new TreeMap<Integer, Integer>());
 				dp.get(len).put(num, cnt);
 			} else {
+				// 如果长度已经存在，那么num的情况数 需要 加上 大于num的情况数d
 				dp.get(len).put(num, dp.get(len).firstEntry().getValue() + cnt);
 			}
 		}
@@ -72,6 +79,7 @@ public class Problem_0673_NumberOfLongestIncreasingSubsequence {
 	}
 
 	// 二分查找，返回>=num最左的位置
+	// 来到当前数字num，num能生成的最大递增子序列的长度为ans+1
 	public static int search(ArrayList<TreeMap<Integer, Integer>> dp, int num) {
 		int l = 0, r = dp.size() - 1, m = 0;
 		int ans = dp.size();
