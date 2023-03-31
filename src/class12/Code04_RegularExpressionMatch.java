@@ -1,6 +1,7 @@
 package class12;
 
 // 测试链接 : https://leetcode.com/problems/regular-expression-matching/
+// 样本对应模型
 public class Code04_RegularExpressionMatch {
 
 	public static boolean isValid(char[] s, char[] e) {
@@ -49,6 +50,7 @@ public class Code04_RegularExpressionMatch {
 			}
 			si++;
 		}
+		// str[si] != exp[ei]   exp[ei+1]=*， 举例a...   b*...
 		return process(s, e, si, ei + 2);
 	}
 
@@ -95,6 +97,7 @@ public class Code04_RegularExpressionMatch {
 		return ans;
 	}
 
+	// 严格位置依赖的版本，课上没讲，跟上面的版本时间复杂度一样的，只是优化了常数项
 	// 动态规划版本 + 斜率优化
 	public static boolean isMatch3(String str, String pattern) {
 		if (str == null || pattern == null) {

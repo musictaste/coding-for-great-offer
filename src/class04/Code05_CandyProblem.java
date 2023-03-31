@@ -75,6 +75,7 @@ public class Code05_CandyProblem {
 		return n + n * (n - 1) / 2;
 	}
 
+	// 阿里原题
 	// 这是进阶问题的最优解，不要提交这个
 	// 时间复杂度O(N), 额外空间复杂度O(1)
 	public static int candy3(int[] arr) {

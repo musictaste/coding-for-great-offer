@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // 本题测试链接 : https://leetcode.com/problems/palindrome-partitioning-ii/
+// 从左到右的尝试模型
 public class Code02_PalindromePartitioningII {
 
 	// 测试链接只测了本题的第一问，直接提交可以通过

@@ -5,11 +5,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 
-public class Code04_FindKMajority {
 
+// 水王数，每年必考
+public class Code04_FindKMajority {
+	// https://leetcode.cn/problems/majority-element/
 	public static void printHalfMajor(int[] arr) {
-		int cand = 0;
-		int HP = 0;
+		int cand = 0; // 候选
+		int HP = 0; // 血量
 		for (int i = 0; i < arr.length; i++) {
 			if (HP == 0) {
 				cand = arr[i];
@@ -37,6 +39,7 @@ public class Code04_FindKMajority {
 		}
 	}
 
+	// 扩展：
 	public static void printKMajor(int[] arr, int K) {
 		if (K < 2) {
 			System.out.println("the value of K is invalid.");
@@ -56,10 +59,6 @@ public class Code04_FindKMajority {
 			}
 		}
 		// 所有可能的候选，都在cands表中！遍历一遍arr，每个候选收集真实次数
-		
-		
-		
-		
 		HashMap<Integer, Integer> reals = getReals(arr, cands);
 		boolean hasPrint = false;
 		for (Entry<Integer, Integer> set : cands.entrySet()) {
@@ -73,6 +72,7 @@ public class Code04_FindKMajority {
 	}
 
 	public static void allCandsMinusOne(HashMap<Integer, Integer> map) {
+		// 迭代器中不要remove，会出问题；
 		List<Integer> removeList = new LinkedList<Integer>();
 		for (Entry<Integer, Integer> set : map.entrySet()) {
 			Integer key = set.getKey();

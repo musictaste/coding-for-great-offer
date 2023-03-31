@@ -6,7 +6,7 @@ import java.util.HashSet;
 // 本题测试链接 : https://leetcode.com/problems/longest-consecutive-sequence/
 public class Code03_LongestConsecutive {
 
-	// 课上讲的解法
+	// 课上讲的解法，课上没有讲，自己研究
 	public static int longestConsecutive(int[] nums) {
 		HashMap<Integer, Integer> map = new HashMap<>();
 		int len = 0;

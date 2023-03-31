@@ -1,6 +1,6 @@
 package class04;
 
-// 打家劫舍I
+// 打家劫舍I 美团面试原题
 // 在线测试链接 : https://leetcode.com/problems/house-robber/
 public class Code04_SubArrayMaxSumFollowUp {
 
@@ -16,7 +16,10 @@ public class Code04_SubArrayMaxSumFollowUp {
 		dp[0] = arr[0];
 		dp[1] = Math.max(arr[0], arr[1]);
 		for (int i = 2; i < arr.length; i++) {
+			// 可能性1：不要i位置的数
 			int p1 = dp[i - 1];
+			// 可能性2：只要i位置的数
+			// 可能性3：要i位置的数 + i-2的情况
 			int p2 = arr[i] + Math.max(dp[i - 2], 0);
 			dp[i] = Math.max(p1, p2);
 		}
