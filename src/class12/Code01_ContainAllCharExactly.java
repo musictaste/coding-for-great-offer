@@ -52,6 +52,7 @@ public class Code01_ContainAllCharExactly {
 		return true;
 	}
 
+	// 课上代码，最优解
 	public static int containExactly3(String s1, String s2) {
 		if (s1 == null || s2 == null || s1.length() < s2.length()) {
 			return -1;

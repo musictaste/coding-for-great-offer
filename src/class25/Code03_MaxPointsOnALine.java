@@ -19,6 +19,7 @@ public class Code03_MaxPointsOnALine {
 		if (points.length <= 2) {
 			return points.length;
 		}
+		// 分子，<分母，出现的次数>
 		// key = 3
 		// value = {7 , 10}  -> 斜率为3/7的点 有10个
 		//         {5,  15}  -> 斜率为3/5的点 有15个
@@ -26,9 +27,13 @@ public class Code03_MaxPointsOnALine {
 		int result = 0;
 		for (int i = 0; i < points.length; i++) {
 			map.clear();
+			// 共点
 			int samePosition = 1;
+			// 横线
 			int sameX = 0;
+			// 竖线
 			int sameY = 0;
+			// 普通斜率的最大点数量
 			int line = 0;
 			for (int j = i + 1; j < points.length; j++) { // i号点，和j号点，的斜率关系
 				int x = points[j][0] - points[i][0];
@@ -59,6 +64,7 @@ public class Code03_MaxPointsOnALine {
 		return result;
 	}
 
+	// 求最大公约数
 	// 保证初始调用的时候，a和b不等于0
 	// O(1)
 	public static int gcd(int a, int b) {
