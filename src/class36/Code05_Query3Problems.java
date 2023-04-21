@@ -16,6 +16,7 @@ package class36;
 //    queryAim(2, 4) -> 50
 //    queryMax(1, 4) -> 3
 public class Code05_Query3Problems {
+	// 线段树 + 前缀和+ 平方的前缀和
 
 	public static class SegmentTree {
 		private int[] max;

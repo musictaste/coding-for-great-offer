@@ -29,20 +29,29 @@ public class Code11_BusRoutes {
 		}
 		ArrayList<Integer> queue = new ArrayList<>();
 		boolean[] set = new boolean[n];
+		// 从出发站，得到出发站有几条线路；入队列的线路标记为已经考查过
 		for (int route : map.get(source)) {
 			queue.add(route);
 			set[route] = true;
 		}
 		int len = 1;
+		// 宽度优先遍历
 		while (!queue.isEmpty()) {
+			// 下一层的公交线路，就是通过上一层的公交线路能找到哪些新的公交线路
 			ArrayList<Integer> nextLevel = new ArrayList<>();
+			// 遍历上一层，收集下一层
 			for (int route : queue) {
+				// 公交路线
 				int[] bus = routes[route];
+				// 公交站点
 				for (int station : bus) {
+					// 公交站=目标站
 					if (station == target) {
 						return len;
 					}
+					// 通过公交站得到新的公交路线
 					for (int nextRoute : map.get(station)) {
+						// 公交站所有在公交路线，如果没有考查过，进队列，
 						if (!set[nextRoute]) {
 							nextLevel.add(nextRoute);
 							set[nextRoute] = true;
@@ -50,6 +59,7 @@ public class Code11_BusRoutes {
 					}
 				}
 			}
+			// 收集好的下一层，成为新的队列
 			queue = nextLevel;
 			len++;
 		}

@@ -42,6 +42,7 @@ public class Code10_StoneGameIV {
 		return ans;
 	}
 
+	// 时间复杂度：O(N*根号N) = O(N*N的开平方)=O(N的1.5次方)
 	public static boolean winnerSquareGame3(int n) {
 		boolean[] dp = new boolean[n + 1];
 		for (int i = 1; i <= n; i++) {

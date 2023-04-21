@@ -13,6 +13,7 @@ package class36;
 // 返回分数
 public class Code04_ComputeExpressionValue {
 
+	// 思路：计算器的递归套路，递归函数返回从i位置以后计算的结果+计算到哪个位置
 	public static int sores(String s) {
 		return compute(s.toCharArray(), 0)[0];
 	}
@@ -23,11 +24,14 @@ public class Code04_ComputeExpressionValue {
 	// 1 : 来到了什么位置停的！
 	public static int[] compute(char[] s, int i) {
 		if (s[i] == ')') {
+			// 如果上来就遇到有括号，结果=1
 			return new int[] { 1, i };
 		}
-		int ans = 1;
+		int ans = 1; // ans = 1 * a * b * c
 		while (i < s.length && s[i] != ')') {
+			// 说明当前位置是(,遇到左括号直接调递归
 			int[] info = compute(s, i + 1);
+			// 递归函数返回的结果+1
 			ans *= info[0] + 1;
 			i = info[1] + 1;
 		}

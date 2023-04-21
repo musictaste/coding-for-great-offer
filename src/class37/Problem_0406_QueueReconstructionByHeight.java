@@ -7,6 +7,7 @@ import java.util.LinkedList;
 
 public class Problem_0406_QueueReconstructionByHeight {
 
+	// 用的常规的数据结构实现的，可以AC；数组插入元素，需要挪动位置
 	public static int[][] reconstructQueue1(int[][] people) {
 		int N = people.length;
 		Unit[] units = new Unit[N];
@@ -27,6 +28,7 @@ public class Problem_0406_QueueReconstructionByHeight {
 		return ans;
 	}
 
+	// 最优解：用了有序表中的size-balance-tree，插入和读取可以做到Log(N)
 	public static int[][] reconstructQueue2(int[][] people) {
 		int N = people.length;
 		Unit[] units = new Unit[N];

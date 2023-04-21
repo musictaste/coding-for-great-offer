@@ -9,6 +9,7 @@ public class Code04_Drive {
 	// 0 [9, 13]
 	// 1 [45,60]
 	public static int maxMoney1(int[][] income) {
+		// (income.length & 1) != 0   数组长度不是偶数
 		if (income == null || income.length < 2 || (income.length & 1) != 0) {
 			return 0;
 		}

@@ -31,15 +31,21 @@ public class Code06_NodeWeight {
 		// 有若干个直接孩子
 		// 1 7个
 		// 3 10个
+		// <节点颜色，个数>
 		HashMap<Integer, Integer> colors = new HashMap<Integer, Integer>();
 		// 1 20
 		// 3 45
+		// <节点颜色，权值和>
 		HashMap<Integer, Integer> weihts = new HashMap<Integer, Integer>();
+		// 来到
 		for (int child : m[h]) {
 			w(child, m, w, c);
+			// 节点颜色，节点个数
 			colors.put(c[child], colors.getOrDefault(c[child], 0) + 1);
+			// 节点颜色，权值和
 			weihts.put(c[child], weihts.getOrDefault(c[child], 0) + w[child]);
 		}
+		// 当前节点的颜色和权值，由直接孩子的max(颜色权值和+节点个数)决定
 		for (int color : colors.keySet()) {
 			w[h] = Math.max(w[h], colors.get(color) + weihts.get(color));
 		}

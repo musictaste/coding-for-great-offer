@@ -25,6 +25,7 @@ public class Problem_0221_MaximalSquare {
 		for (int i = 1; i < N; i++) {
 			for (int j = 1; j < M; j++) {
 				if (m[i][j] == '1') {
+					// min(左上角、左边、上边) +1
 					dp[i][j] = Math.min(
 							Math.min(dp[i - 1][j],
 									dp[i][j - 1]), 

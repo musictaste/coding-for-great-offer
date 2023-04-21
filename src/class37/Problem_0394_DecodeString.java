@@ -1,5 +1,6 @@
 package class37;
 
+// 嵌套递归套路，基本计算器
 public class Problem_0394_DecodeString {
 
 	public static String decodeString(String s) {
@@ -28,6 +29,7 @@ public class Problem_0394_DecodeString {
 			if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')) {
 				ans.append(s[i++]);
 			} else if (s[i] >= '0' && s[i] <= '9') {
+				// count = 21
 				count = count * 10 + s[i++] - '0';
 			} else { // str[index] = '['
 				Info next = process(s, i + 1);

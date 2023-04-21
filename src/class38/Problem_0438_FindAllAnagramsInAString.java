@@ -15,7 +15,9 @@ public class Problem_0438_FindAllAnagramsInAString {
 		int N = str.length;
 		char[] pst = p.toCharArray();
 		int M = pst.length;
+		// <某个字符，欠多少个>
 		HashMap<Character, Integer> map = new HashMap<>();
+		// 得到欠债表
 		for (char cha : pst) {
 			if (!map.containsKey(cha)) {
 				map.put(cha, 1);
@@ -24,6 +26,7 @@ public class Problem_0438_FindAllAnagramsInAString {
 			}
 		}
 		int all = M;
+		// 先形成一个窗口，长度为要匹配字符串的长度
 		for (int end = 0; end < M - 1; end++) {
 			if (map.containsKey(str[end])) {
 				int count = map.get(str[end]);
@@ -33,6 +36,7 @@ public class Problem_0438_FindAllAnagramsInAString {
 				map.put(str[end], count - 1);
 			}
 		}
+		// 吐一个元素，再加一个元素，查看all是否为0
 		for (int end = M - 1, start = 0; end < N; end++, start++) {
 			if (map.containsKey(str[end])) {
 				int count = map.get(str[end]);

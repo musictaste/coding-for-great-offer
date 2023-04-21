@@ -30,6 +30,7 @@ public class Code02_HowManyTypes {
 		return types.size();
 	}
 
+	// 最优解
 	public static int types2(String[] arr) {
 		HashSet<Integer> types = new HashSet<>();
 		for (String str : arr) {

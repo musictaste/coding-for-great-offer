@@ -12,11 +12,12 @@ import java.util.Arrays;
 // 这是最大的拿取方式，返回总分17
 public class Code07_PickAddMax {
 
-	// 最优解
+	// 最优解：从大到小拿
 	public static int pick(int[] arr) {
 		Arrays.sort(arr);
 		int ans = 0;
 		for (int i = arr.length - 1; i >= 0; i--) {
+			// 这个公式是观察来的，ans*2 + i
 			ans = (ans << 1) + arr[i];
 		}
 		return ans;

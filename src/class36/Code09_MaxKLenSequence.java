@@ -7,6 +7,7 @@ import java.util.TreeSet;
 // 返回长度为k的所有子序列中，字典序最大的子序列
 public class Code09_MaxKLenSequence {
 
+	// 单调栈，贪心算法
 	public static String maxString(String s, int k) {
 		if (k <= 0 || s.length() < k) {
 			return "";
@@ -16,9 +17,11 @@ public class Code09_MaxKLenSequence {
 		char[] stack = new char[n];
 		int size = 0;
 		for (int i = 0; i < n; i++) {
+			// 栈里有元素，+ 栈底元素小于当前元素 + 栈里元素个数+当前字符后面的字符长度 > 指定的子序列个数，那么当前元素弹出栈
 			while (size > 0 && stack[size - 1] < str[i] && size + n - i > k) {
 				size--;
 			}
+			// 栈里的元素+字符串剩余的字符个数=k，直接返回
 			if (size + n - i == k) {
 				return String.valueOf(stack, 0, size) + s.substring(i);
 			}

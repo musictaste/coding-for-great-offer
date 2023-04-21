@@ -18,11 +18,12 @@ public class Problem_0114_FlattenBinaryTreeToLinkedList {
 		}
 	}
 
-	// 普通解
+	// 普通解，二叉树的递归套路
 	public static void flatten1(TreeNode root) {
 		process(root);
 	}
 
+	// 递归函数返回信息：双向链表的头节点、尾结点
 	public static class Info {
 		public TreeNode head;
 		public TreeNode tail;
@@ -33,6 +34,7 @@ public class Problem_0114_FlattenBinaryTreeToLinkedList {
 		}
 	}
 
+	// 递归函数，将二叉树转化成双向链表
 	public static Info process(TreeNode head) {
 		if (head == null) {
 			return null;
@@ -47,7 +49,7 @@ public class Problem_0114_FlattenBinaryTreeToLinkedList {
 		return new Info(head, tail);
 	}
 
-	// Morris遍历的解
+	// Morris中序遍历的解
 	public static void flatten2(TreeNode root) {
 		if (root == null) {
 			return;

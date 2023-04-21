@@ -19,7 +19,7 @@ public class Code01_StringKth {
 	// +
 	// 以b开头，剩下长度为(0~6)的所有可能性有几个
 	// +
-	// 以c开头，剩下长度为(0)的所有可能性有几个
+	// 以c开头，剩下长度为(0)的所有可能性有几个 1个
 	// 第二位d :
 	// +
 	// 以ca开头的情况下，剩下长度为(0~5)的所有可能性有几个
@@ -28,12 +28,12 @@ public class Code01_StringKth {
 	// +
 	// 以cc开头的情况下，剩下长度为(0~5)的所有可能性有几个
 	// +
-	// 以cd开头的情况下，剩下长度为(0)的所有可能性有几个
+	// 以cd开头的情况下，剩下长度为(0)的所有可能性有几个 1个
 	// 第三位b
 	// +
 	// 以cda开头的情况下，剩下长度为(0~4)的所有可能性有几个
 	// +
-	// 以cdb开头的情况下，剩下长度为(0)的所有可能性有几个
+	// 以cdb开头的情况下，剩下长度为(0)的所有可能性有几个 1个
 	public static int kth(String s, int len) {
 		if (s == null || s.length() == 0 || s.length() > len) {
 			return -1;
@@ -41,6 +41,12 @@ public class Code01_StringKth {
 		char[] num = s.toCharArray();
 		int ans = 0;
 		for (int i = 0, rest = len - 1; i < num.length; i++, rest--) {
+			// d 0~k
+			// a 0~k
+			// b 0~k
+			// c 0~k
+			// d -'a' * f(0~k)
+			// 1: 以a开头的剩余长度为0的可能性有1个
 			ans += (num[i] - 'a') * f(rest) + 1;
 		}
 		return ans;
