@@ -24,6 +24,7 @@ package class08;
 public class Code03_FindWordInMatrix {
 
 	// 可以走重复的设定
+	// 改成严格位置依赖的动态规划
 	public static boolean findWord1(char[][] m, String word) {
 		if (word == null || word.equals("")) {
 			return true;
@@ -59,8 +60,10 @@ public class Code03_FindWordInMatrix {
 		return false;
 	}
 
+	// 课上代码
 	// 可以走重复路
 	// 从m[i][j]这个字符出发，能不能找到str[k...]这个后缀串
+	// 可以改成记忆化搜索的动态规划，严格位置依赖的动态规划没有必要改写
 	public static boolean canLoop(char[][] m, int i, int j, char[] str, int k) {
 		if (k == str.length) {
 			return true;
@@ -78,8 +81,10 @@ public class Code03_FindWordInMatrix {
 		return ans;
 	}
 
+	// 课上代码
 	// 不能走重复路
 	// 从m[i][j]这个字符出发，能不能找到str[k...]这个后缀串
+	// 注意不能改动态规划，也不需要改动态规划，原因是char[][] m会塞0
 	public static boolean noLoop(char[][] m, int i, int j, char[] str, int k) {
 		if (k == str.length) {
 			return true;
@@ -94,6 +99,7 @@ public class Code03_FindWordInMatrix {
 				|| noLoop(m, i, j - 1, str, k + 1)) {
 			ans = true;
 		}
+		// 恢复现场
 		m[i][j] = str[k];
 		return ans;
 	}

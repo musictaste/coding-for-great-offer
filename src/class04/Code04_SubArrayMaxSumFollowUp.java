@@ -40,6 +40,7 @@ public class Code04_SubArrayMaxSumFollowUp {
 	// 比如，arr[0...i] = {3,1,4}，最大累加和是3和4组成的7，因为相邻不能选，所以i-1位置的数要跳过
 	//
 	// 综上所述：dp[i] = Max { dp[i-1], arr[i] , arr[i] + dp[i-2] }
+	// 课上代码
 	public static int rob2(int[] arr) {
 		if (arr == null || arr.length == 0) {
 			return 0;
