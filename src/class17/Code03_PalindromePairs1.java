@@ -1,11 +1,15 @@
 package class17;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+// 课上讲了哈希表+manacher
+// 有关manacher的解释，看这个帖子 : https://www.mashibing.com/question/detail/56727
+// 从代码层次讲了一下，例子非常详细
 // 测试链接 : https://leetcode.com/problems/palindrome-pairs/
-public class Code03_PalindromePairs {
+public class Code03_PalindromePairs1 {
 
 	public static List<List<Integer>> palindromePairs(String[] words) {
 		HashMap<String, Integer> wordset = new HashMap<>();
@@ -13,10 +17,7 @@ public class Code03_PalindromePairs {
 			wordset.put(words[i], i);
 		}
 		List<List<Integer>> res = new ArrayList<>();
-		//{ [6,23] 、 [7,13] }
 		for (int i = 0; i < words.length; i++) {
-			// i words[i]
-			// findAll(字符串，在i位置，wordset) 返回所有生成的结果返回
 			res.addAll(findAll(words[i], i, wordset));
 		}
 		return res;
@@ -27,8 +28,8 @@ public class Code03_PalindromePairs {
 		String reverse = reverse(word);
 		Integer rest = words.get("");
 		if (rest != null && rest != index && word.equals(reverse)) {
-			addRecord(res, rest, index);
-			addRecord(res, index, rest);
+			res.add(Arrays.asList(rest, index));
+			res.add(Arrays.asList(index, rest));
 		}
 		int[] rs = manacherss(word);
 		int mid = rs.length >> 1;
@@ -36,7 +37,7 @@ public class Code03_PalindromePairs {
 			if (i - rs[i] == -1) {
 				rest = words.get(reverse.substring(0, mid - i));
 				if (rest != null && rest != index) {
-					addRecord(res, rest, index);
+					res.add(Arrays.asList(rest, index));
 				}
 			}
 		}
@@ -44,18 +45,11 @@ public class Code03_PalindromePairs {
 			if (i + rs[i] == rs.length) {
 				rest = words.get(reverse.substring((mid << 1) - i));
 				if (rest != null && rest != index) {
-					addRecord(res, index, rest);
+					res.add(Arrays.asList(index, rest));
 				}
 			}
 		}
 		return res;
-	}
-
-	public static void addRecord(List<List<Integer>> res, int left, int right) {
-		List<Integer> newr = new ArrayList<>();
-		newr.add(left);
-		newr.add(right);
-		res.add(newr);
 	}
 
 	public static int[] manacherss(String word) {
